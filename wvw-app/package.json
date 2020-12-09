@@ -1,46 +1,37 @@
 {
-  "name": "wvw-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "willamette-valley-wineries",
+  "version": "1.0.0",
+  "description": "An app for wine enthusiasts",
+  "main": "server.js",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.5.0",
-    "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
-    "react-bootstrap-validation": "^0.1.11",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "bcryptjs":"^2.4.3",
     "express": "^4.17.1",
-    "mongoose": "^5.11.5"
+    "mongoose": "^5.11.5",
+    "concurrently": "^4.1.0",
+    "if-env": "^1.0.4",
+    "axios": "^0.18.0"
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egilbertsen/Willamette-Valley-Wineries.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egilbertsen/Willamette-Valley-Wineries/issues"
+  },
+  "homepage": "https://github.com/egilbertsen/Willamette-Valley-Wineries#readme"
 }
