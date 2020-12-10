@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Body from './components/Body';
 import Login from './components/Login';
 import Register from './components/Register';
+import './index.css';
 
 function App() {
   return (
