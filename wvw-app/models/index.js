@@ -1,5 +1,5 @@
 module.exports = {
   Winery: require("./winery"),
-  UserList: require("./list"),
-  User: require("./user")
+  UserList: require("./list")
+  // User: require("./user")
 };

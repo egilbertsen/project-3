@@ -1,15 +1,15 @@
-const router = require("express").Router();
-const usersController = require("../../controllers/usersController");
+// const router = require("express").Router();
+// const usersController = require("../../controllers/usersController");
 
-//  /api/users
-router.route("/")
-  .get(Controller.findAll)
-  .post(usersController.create);
+// //  /api/users
+// router.route("/")
+//   .get(Controller.findAll)
+//   .post(usersController.create);
 
-//  /api/users/:id
-router.route("/:id")
-  .get(usersController.findById)
-  .put(usersController.update)
-  .delete(usersController.remove);
+// //  /api/users/:id
+// router.route("/:id")
+//   .get(usersController.findById)
+//   .put(usersController.update)
+//   .delete(usersController.remove);
 
-module.exports = router;
+// module.exports = router;
