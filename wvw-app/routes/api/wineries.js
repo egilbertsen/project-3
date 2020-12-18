@@ -3,7 +3,7 @@ const wineriesController = require("../../controllers/wineriesController");
 
 //  /api/wineries
 router.route("/")
-  .get(Controller.findAll)
+  .get(wineriesController.findAll)
   .post(wineriesController.create);
 
 //  /api/wineries/:id
