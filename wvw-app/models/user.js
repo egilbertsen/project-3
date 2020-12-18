@@ -1,13 +1,27 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
+var bcrypt = require("bcryptjs");
 
-// const userSchema = new Schema({
-//   name: { type: String, required: true },
-//   email: { type: String, required: true },
-//   password: {type: String},
-//   date: { type: Date, default: Date.now }
-// });
+module.exports = function (sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  },
+    {
+      freezeTableName: true
+    });
 
-// const User = mongoose.model("User", userSchema);
+  User.prototype.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
 
-// module.exports = User;
+  User.addHook("beforeCreate", function (user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
+  return User;
+};
