@@ -21,7 +21,8 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
 
-require("./routes/apiRoutes.js")(app);
+require("./routes/userRoutes")(app);
+require("./routes/wineryRoutes")(app);
 require("./routes/htmlRoutes.js")(app);
 
 
