@@ -6,23 +6,36 @@ export default function Login() {
 
     const handleOnClick = (e) => {
         e.preventDefault()
-        let email = document.querySelector('#formBasicEmail').value;
-        let password = document.querySelector('#formBasicPassword').value;
-        console.log(email);
-        console.log(password);
+        let emailInput = document.querySelector('#formBasicEmail').value;
+        let passwordInput = document.querySelector('#formBasicPassword').value;
+        console.log(emailInput);
+        console.log(passwordInput);
         console.log('this works');
 
-        axios.post("/login", {
+        var userData = {
+            email: emailInput,
+            password: passwordInput
+        };
+
+        if (!userData.email || !userData.password) {
+            return;
+        }
+        loginUser(userData.email, userData.password);
+    }
+
+    function loginUser(email, password) {
+        axios.post("/api/login", {
             email: email,
             password: password
         })
-            .then(function (response) {
-                console.log(response);
+            .then(function () {
+                console.log("logged in!")
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch(function (err) {
+                console.log(err);
             });
     }
+
 
     return (
         <Container className="text-center d-flex justify-content-center">
