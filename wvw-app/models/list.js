@@ -1,13 +1,28 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function (sequelize, DataTypes) {
+  var List = sequelize.define("List", {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    wineries: {
+      type: DataTypes.STRING,
+      get: function () {
+        return JSON.parse(this.getDataValue('wineries'));
+      },
+      get: function (val) {
+        return this.setDataValue('wineries', JSON.stringify(val));
+      }
+    }
+  });
 
-const listSchema = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  wineries: [String],
-  date: { type: Date, default: Date.now }
-});
+  List.associate = function (models) {
 
-const List = mongoose.model("List", listSchema);
+    List.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
-module.exports = List;
+  return List;
+};

@@ -1,16 +1,31 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function (sequelize, DataTypes) {
+    let Winery = sequelize.define('Winery', {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        phone: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING
+        },
+        website: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        notes: {
+            type: DataTypes.STRING
+        }
+    },
+        {
+            freezeTableName: true,
+            timestamps: false
+        });
 
-const winerySchema = new Schema({
-  name: { type: String, required: true },
-  address: { type: String, required: true },
-  phone: String,
-  email: String,
-  website: { type: String, required: true },
-  notes: String,
-  date: { type: Date, default: Date.now }
-});
-
-const Winery = mongoose.model("Winery", winerySchema);
-
-module.exports = Winery;
+    return Winery;
+}
