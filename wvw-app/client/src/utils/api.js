@@ -5,7 +5,11 @@ export default {
         return axios.get("/api/wineries");
     },
 
-    checkUserStatus: function() {
-        return axios.get("/api/user_data");
+    signUpUser: function (userData) {
+        return axios.get("/api/signup", userData);
+    },
+
+    signInUser: function (userData) {
+        return axios.get("/api/login", userData);
     }
 };

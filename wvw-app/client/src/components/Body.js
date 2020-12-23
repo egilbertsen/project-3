@@ -6,14 +6,11 @@ import API from "../utils/api";
 
 class Body extends Component {
     state = {
-        wineries: [],
-        username: "",
-        userId: ""
+        wineries: []
     };
 
     componentDidMount = () => {
         this.loadWineries();
-        this.checkUserStatus();
     }
 
     loadWineries = () => {
@@ -22,17 +19,6 @@ class Body extends Component {
                 wineries: res.data
             })
         }).catch(err => console.log(err))
-    }
-
-    checkUserStatus = () => {
-        API.checkUserStatus().then(res => {
-            this.setState({
-                username: res.data.email,
-                userId: res.data.id
-            })
-
-            console.log(this.state.userId)
-        })
     }
 
     render() {
