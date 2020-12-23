@@ -11,7 +11,6 @@ export default function Register() {
         console.log(emailInput);
         console.log(passwordInput);
         console.log('this works');
-        
 
         var userData = {
             email: emailInput,
