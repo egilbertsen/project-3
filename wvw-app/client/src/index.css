@@ -18,9 +18,25 @@ code {
   width: 600px;
 }
 
+.muted {
+  color: grey;
+  background-color: white;
+  border: 2px solid #5c0802;
+  font-weight: 800;
+}
+
+.muted:hover {
+  color: #5c0802;
+  background-color: whitesmoke;
+  border: 2px solid #5c0802;
+}
+
 main {
   height: calc(100vh - 154px);
 }
+
+
+
 
 .left-column, .right-column {
   height: calc(100vh - 210px);
