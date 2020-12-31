@@ -11,5 +11,9 @@ export default {
 
     signInUser: function (userData) {
         return axios.get("/api/login", userData);
+    },
+
+    getLoginStatus: function () {
+        return axios.get("/api/user_data")
     }
 };
