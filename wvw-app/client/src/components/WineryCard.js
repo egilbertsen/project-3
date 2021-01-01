@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactTooltip from 'react-tooltip'
 import { Card, Button } from "react-bootstrap";
 
 
@@ -12,11 +13,14 @@ class WineryCard extends Component {
         let cardButton;
         if (isLoggedIn) {
             cardButton = <div>
-                <Button className = "addButton" id = {userID}> + </Button>
+                <Button className = "addButton" data-tip = "Save Winery to Favorites" id = {userID}> + </Button>
+                <Button  className = "muted addButton"> + </Button>
+                <ReactTooltip effect="solid" place ="bottom" />
             </div>
         } else {
-            cardButton = <div>
-                <Button  className = "muted addButton"> + </Button>
+            cardButton = <div >
+                <Button data-tip = "Sign in to Save Winery" className = "muted addButton"> + </Button>
+                <ReactTooltip effect="solid" place ="bottom" />
             </div>
         }
 
