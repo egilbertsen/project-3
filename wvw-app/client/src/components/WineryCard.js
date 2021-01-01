@@ -12,13 +12,12 @@ class WineryCard extends Component {
         const { isLoggedIn, userID } = this.context;
         let cardButton;
         if (isLoggedIn) {
-            cardButton = <div>
+            cardButton = <div className = "addButtonContainer">
                 <Button className = "addButton" data-tip = "Save Winery to Favorites" id = {userID}> + </Button>
-                <Button  className = "muted addButton"> + </Button>
                 <ReactTooltip effect="solid" place ="bottom" />
             </div>
         } else {
-            cardButton = <div >
+            cardButton = <div className = "addButtonContainer">
                 <Button data-tip = "Sign in to Save Winery" className = "muted addButton"> + </Button>
                 <ReactTooltip effect="solid" place ="bottom" />
             </div>
