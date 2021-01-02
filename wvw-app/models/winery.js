@@ -22,10 +22,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     },
-        {
-            freezeTableName: true,
-            timestamps: false
-        });
+    {
+        freezeTableName: true,
+        timestamps: false
+    });
+
+    Winery.associate = function(models) {
+        Winery.belongsToMany(models.List, {through: 'ListWinery'});
+    }
 
     return Winery;
 }
