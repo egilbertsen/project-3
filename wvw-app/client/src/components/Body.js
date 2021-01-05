@@ -5,15 +5,29 @@ import WineryCard from "../components/WineryCard"
 import API from "../utils/api";
 
 class Body extends Component {
-    state = {
-        wineries: []
-    };
-
-    componentDidMount = () => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            wineries: [],
+            filteredWineries: []
+        };
+        
+        this.searchWinery = this.searchWinery.bind(this);
+        this.loadWineries = this.loadWineries.bind(this);
+    }
+    
+    componentWillMount = () => {
         this.loadWineries();
     }
 
-    loadWineries = () => {
+    searchWinery(winery) {
+        let searchResult = this.state.wineries.filter(currentWinery => {
+            return currentWinery.name.toUpperCase().includes(winery.toUpperCase());
+        });
+        this.setState({ filteredWineries: searchResult });
+    }
+
+    loadWineries() {
         API.loadWineries().then(res => {
             this.setState({
                 wineries: res.data
@@ -24,12 +38,12 @@ class Body extends Component {
     render() {
         return (
             <main>
-                <Search />
+                <Search handleClick={this.searchWinery} />
                 <Container fluid className="main-content">
                     <Row className="d-flex">
                         <Col lg={3} className="left-column">
                             <div>
-                                {this.state.wineries.map(winery => (
+                                {this.state.filteredWineries.map(winery => (
                                     <WineryCard
                                         key={winery.id}
                                         name={winery.name}

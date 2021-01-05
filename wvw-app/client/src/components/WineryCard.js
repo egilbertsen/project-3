@@ -3,7 +3,7 @@ import ReactTooltip from 'react-tooltip'
 import { Card, Button } from "react-bootstrap";
 
 
-class WineryCard extends Component {
+export default class WineryCard extends Component {
     constructor(props) {
         super(props);
     }
@@ -30,14 +30,14 @@ class WineryCard extends Component {
                     <Card.Title> 
                         {this.props.name}
                     </Card.Title>
-                    <Card.Text>
+                    {/* <Card.Text> */}
                         <ul>
                             <li> Address: {this.props.address} </li>
                             <li> Email: {this.props.email} </li>
                             <li> Website: {this.props.website} </li>
                             <li> Notes: {this.props.notes}</li>
                         </ul>
-                    </Card.Text>
+                    {/* </Card.Text> */}
                     {cardButton}
                 </Card.Body>
             </Card>
@@ -46,4 +46,4 @@ class WineryCard extends Component {
     }
 }
 
-export default WineryCard;
+// export default WineryCard;
