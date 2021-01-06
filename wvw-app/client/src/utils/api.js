@@ -15,5 +15,17 @@ export default {
 
     getLoginStatus: function () {
         return axios.get("/api/user_data")
+    },
+    
+    loadUsersList: function (userId) {
+        return axios.get("/api/lists/:" + userId)
+    },
+
+    firstPostRoute: function (wineryData, userId) {
+        return axios.post("/api/lists" + userId, wineryData)
+    },
+
+    listUpdate: function (currentList, userId) {
+        return axios.put("/api/lists" + userId, currentList)
     }
 };
