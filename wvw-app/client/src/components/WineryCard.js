@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import ReactTooltip from 'react-tooltip'
 import { Card, Button } from "react-bootstrap";
-
+import { LoginContext } from './LoginContext';
 
 export default class WineryCard extends Component {
+    static contextType = LoginContext;
+
     constructor(props) {
         super(props);
     }
@@ -13,7 +15,7 @@ export default class WineryCard extends Component {
         let cardButton;
         if (isLoggedIn) {
             cardButton = <div className = "addButtonContainer">
-                <Button className = "addButton" data-tip = "Save Winery to Favorites" id = {userID}> + </Button>
+                <Button className = "addButton" data-tip = "Save Winery to Favorites" onClick = {this.props.handleSave}> + </Button>
                 <ReactTooltip effect="solid" place ="bottom" />
             </div>
         } else {
