@@ -39,7 +39,7 @@ export default function Login() {
 
 
     return (
-        <Container className="text-center d-flex justify-content-center">
+        <Container className="text-center d-flex justify-content-center login-background">
             <div className="formContainer">
                 <Form>
                     <Form.Group controlId="formBasicEmail">
