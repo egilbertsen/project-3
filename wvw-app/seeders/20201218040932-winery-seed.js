@@ -1669,9 +1669,9 @@ var seedWineries = [
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('winery', seedWineries, {});
+    await queryInterface.bulkInsert('Winery', seedWineries, {});
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('winery', null, {});
+    await queryInterface.bulkInsert('Winery', null, {});
   }
 };
